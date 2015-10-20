@@ -51,7 +51,7 @@ This project is completely licensed [GPL v3+](https://github.com/raffalba/MYSIRR
 |      License   |            GNU GPL v.3
 
 ## Quick Start
-The tool is composed by three main classes:.the class that contains the several main functions [myfun.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/myfun.py) utilized in the main class [mysirr.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysirr.py), that managed the input parameters to evaluate the results and, therefore, to create the outputs, and finally the class [mysim.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysim.py) used to read the project file and its components and run the proposed model. *The tool has no user interface. Hence, it can be used in applications where iterative runs are required.*
+The tool is composed by three main classes:.the class that contains the several main functions "[myfun.py](https://github.com/raffalba/MYSIRR/blob/master/scripts/myfun.py)" utilized in the main class "[mysirr.py](https://github.com/raffalba/MYSIRR/blob/master/scripts/mysirr.py)", that managed the input parameters to evaluate the results and, therefore, to create the outputs, and finally the class "[mysim.py](https://github.com/raffalba/MYSIRR/blob/master/scripts/mysim.py)" used to read the project file and its components and run the proposed model. *The tool has no user interface. Hence, it can be used in applications where iterative runs are required.*
  
 ### Input data
 MY SIRR uses fairly intuitive input variables, either widely used or largely requiring simple methods for their determination. 
@@ -59,7 +59,7 @@ Input data is a project files, encoding in Extensible Markup Language (XLM), com
 <p align="center"><img src="https://github.com/raffalba/MYSIRR/blob/master/img/input.png"/></p>
 
 ### how to run the model
-The tool has no user interface. However, the model simulation could be easily run by terminal or through a batch or python interpreterand. The scripts could be easly used for iterative runs. The user can run the model: (i) lunching the class [mysim.py] (hhttps://github.com/raffalba/MYSIRR/blob/master/scripts/mysim.py) that requires as input the project file (XLM) and the name of output file or (ii) lunching the main class [mysirr.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysirr.py) giving as input the following information (that are store in xlm format in the project file):
+The tool has no user interface. However, the model simulation could be easily run by terminal or through a batch or python interpreterand. The scripts could be easly used for iterative runs. The user can run the model: (i) lunching the class "[mysim.py](https://github.com/raffalba/MYSIRR/blob/master/scripts/mysim.py)" that requires as input the project file (XLM) and the name of output file or (ii) lunching the main class "[mysirr.py](https://github.com/raffalba/MYSIRR/blob/master/scripts/mysirr.py)" giving as input the following information (that are store in xlm format in the project file):
 1) furnish the name of all input modules (i.e. climate.csv, soil.csv, crop.csv and management.csv) 
 2) select the number of the soil cell to run (e.g. 1)
 3) provide information about ET0 (i.e. BT if ET0 is evaluated by Blaney-Criddle method, PM if estimated by Penman-Monteith equation and N if ET0 is provided by the user)
