@@ -38,7 +38,7 @@ Learn more about the **MYSIRR** project scope, requirements, and licensing.
 - If you use Microsoft excel input file, it is requires also [xlrd] (https://pypi.python.org/pypi/xlrd) and [xlwt] (https://pypi.python.org/pypi/xlwt) python package
 
 ### License
-This project is completely licensed [GPL v3+](https://github.com/raffalba/MYSIRR/LICENSE).
+This project is completely licensed [GPL v3+](https://github.com/raffalba/MYSIRR/blob/master/LICENSE).
 
 ### Metadata
 | Metadata Title	| Description 	|
@@ -56,7 +56,7 @@ The tool is composed by three main classes:.the class that contains the several 
 ### Input data
 MY SIRR uses fairly intuitive input variables, either widely used or largely requiring simple methods for their determination. 
 Input data is a project files, encoding in Extensible Markup Language (XLM), composed by a set of input modules in comma separated value or Microsoft excel format (see the following figures):
-<p align="center"><img src="https://github.com/raffalba/MYSIRR/img/input.png"/></p>
+<p align="center"><img src="https://github.com/raffalba/MYSIRR/blob/master/img/input.png"/></p>
 
 ### how to run the model
 The tool has no user interface. However, the model simulation could be easily run by terminal or through a batch or python interpreterand. The scripts could be easly used for iterative runs. The user can run the model: (i) lunching the class [mysim.py] (https://github.com/raffalba/MYSIRR/scripts/mysim.py) that requires as input the project file (XLM) and the name of output file or (ii) lunching the main class [mysirr.py] (https://github.com/raffalba/MYSIRR/scripts/mysirr.py)) giving as input the following information (that are store in xlm format in the project file):
