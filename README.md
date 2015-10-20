@@ -51,7 +51,7 @@ This project is completely licensed [GPL v3+](https://github.com/raffalba/MYSIRR
 |      License   |            GNU GPL v.3
 
 ## Quick Start
-The tool is composed by three main classes:.the class that contains the several main functions [myfun.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/myfun.py)) utilized in the main class [mysirr.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysirr.py)), that managed the input parameters to evaluate the results and, therefore, to create the outputs, and finally the class [mysim.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysim.py) used to read the project file and its components and run the proposed model. *The tool has no user interface. Hence, it can be used in applications where iterative runs are required.*
+The tool is composed by three main classes:.the class that contains the several main functions [myfun.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/myfun.py) utilized in the main class [mysirr.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysirr.py), that managed the input parameters to evaluate the results and, therefore, to create the outputs, and finally the class [mysim.py] (https://github.com/raffalba/MYSIRR/blob/master/scripts/mysim.py) used to read the project file and its components and run the proposed model. *The tool has no user interface. Hence, it can be used in applications where iterative runs are required.*
  
 ### Input data
 MY SIRR uses fairly intuitive input variables, either widely used or largely requiring simple methods for their determination. 
