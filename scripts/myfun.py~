@@ -13,7 +13,7 @@ class Param:
        a=0;         
        b0=0;         
        s_xi=0;
-## piecewise linear function for normalized loss rate (ET) under well-watered conditions
+       
 def nerl(s, p):
 	if s<p.s_c:
 		 y=(p.eta)*(float(s)/float(p.s_c));
@@ -33,8 +33,7 @@ class outputsim:
     LQ_norm=[];
     b=[];
     g=[];
-    
-## Blaney-Criddle equation
+
 def et_Blaney_Criddle(T,p,rhmin,n_N,Ud):
     Ndays=len(T)
     et=[0] * Ndays
@@ -45,7 +44,6 @@ def et_Blaney_Criddle(T,p,rhmin,n_N,Ud):
         et[t]=a+(b*f);
     return et
 
-## Penman-Monteith equation 
 def et_PM(T,delta,rn,u2,es,ea,gamma):
     Ndays=len(T)
     et=[0] * Ndays
@@ -56,18 +54,15 @@ def et_PM(T,delta,rn,u2,es,ea,gamma):
         den=delta[t]+gamma*(1+cd*u2[t])
         et[t]=num/den
     return et
-    
-## Water Productivity
+
 def WP(y,v,r,ds):
     return float(y)/float(v+r+ds)
 
-## Yeld - empirical equation (Vico2011)
 def Y_vico2011(ETseas,Ymax,ETseas_50,a):
     num=Ymax* (ETseas**a)
     den=(ETseas_50**a + ETseas**a);
     return float(num)/float(den)
 
-## Yeld - dichotomic pocess (Vico2013)
 def crop_development_simulation_R_ET_Z_I(p,Ndays,s_start,R,ET_max,Zr,I):
     outs=soil_moisture_simulation_R_ET_Z_I(p,Ndays,s_start,R,ET_max,Zr,I)
     s=outs.s
@@ -86,7 +81,7 @@ def crop_development_simulation_R_ET_Z_I(p,Ndays,s_start,R,ET_max,Zr,I):
     out.b=b;
     out.g=g;
     return out         
- ## soil water balance equation               
+                
 def soil_moisture_simulation_R_ET_Z_I(p,Ndays,s_start,R,ET_max,Zr,I):
     out=outputsim()
     s = [0] * (Ndays+1)

@@ -12,7 +12,8 @@ import xml.etree.cElementTree as ET
 parser = argparse.ArgumentParser(description=' soil omisture simulation')
 
 ##1. Climate
-##    - Un unico file in cui sono immagazzinati i dati relativi a Rain e ET , colonna 10 e 12 di BATT_2013.txt 
+##    - It stores: Rainfall, (i.e.observed values), parameters for evaluate rainfall with a stochastic approach, (i.e., lambda and alpha), 
+##  Evapotraspitration and parameters to estimate ET0 with Blaney-Criddle or Penman-Monteith equation. 
 parser.add_argument('Climate')
 col_clim_rain=0
 col_clim_T=6
@@ -32,15 +33,12 @@ col_clim_alpha=14
 
 
 ####2. Soil
-####    - dati relativi a soil: n, s_1, s*, s_w, s_taget, s_tilde per una matrice di ID soil 
-####altri_input_pesco_Mellone_dati.txt
+####    - soil parameters, n, s_fc, s*, s_w, in form of matrix (ID cell for differnt soil type)
 parser.add_argument('Soil')
 col_soil_s_w=0
 col_soil_s_1=1
 col_soil_s_c=2
 col_soil_n=3
-col_soil_s_tilde=4
-col_soil_s_target=5
 
 
 ####3. crop
@@ -56,10 +54,10 @@ col_crop_b0=7
 col_crop_s_xi=8
 
 ####4. Management
-####    - File relativo ad irrigazione  colonna 11 di BATT_2013.txt 
+####    - Irrigation application efficiency, time and amount 
 parser.add_argument('Management')
 
-## id cell
+## id cell - select soil type
 parser.add_argument('IDcell')
 
 ## use Blaney_Criddle 0=no 1=BC, 2 PM
@@ -71,12 +69,13 @@ parser.add_argument('rainrandom')
 ### outputfile,  xls o csv
 parser.add_argument('outputfile')
 
-##  vico2011  o vico2013
+##  Yeld empirical (vico2011) or dichotomic (vico2013) formula
 parser.add_argument('vico')
 
-##  soil moisture start
+##  soil moisture start (initial condition)
 parser.add_argument('soilmoisture_start')
 
+## input file and method for their evaluation
 args = parser.parse_args()
 idcell=int(args.IDcell)
 input_clim=args.Climate
@@ -106,6 +105,7 @@ if args.ET.find("N")<0 and args.ET.find("BC")<0 and args.ET.find("PM")<0 :
     
 outputfile=args.outputfile
 vico=args.vico
+
 ###### LOAD INPUT FILES
 
 ## climate

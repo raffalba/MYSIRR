@@ -2,7 +2,7 @@ import xml.etree.cElementTree as ET
 import os
 import sys
 
-## poject file (xml)
+
 projfile=sys.argv[1]
 
 tree=ET.parse(projfile)
