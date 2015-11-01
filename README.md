@@ -69,6 +69,7 @@ The tool has no user interface. However, the model simulation could be easily ru
 
 ### Output data
 The results consist of the Climate-Crop-Soil water output diagrammed in two main graphs and stored an output file (csv or excel) that could be easily retrieved in spreadsheet programmers for further processing and analysis.
+<p align="center"><img src="https://github.com/raffalba/MYSIRR/blob/master/img/Climate-Soil-Crop.png"/></p>
 
 ## Documentation
 *See the full article on Science of Computer Programming [submitted](http://www.journals.elsevier.com/science-of-computer-programming/).*
