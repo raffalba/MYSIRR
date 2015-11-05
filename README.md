@@ -72,7 +72,7 @@ The results consist of the Climate-Crop-Soil water output diagrammed in two main
 <p align="center"><img src="https://github.com/raffalba/MYSIRR/blob/master/img/Climate-Soil-Crop.png"/></p>
 
 ## Documentation
-*See the full article on Science of Computer Programming [submitted](http://www.journals.elsevier.com/science-of-computer-programming/).*
+*See the full article on Software X [submitted](hhttp://www.journals.elsevier.com/softwarex/) - Elsevir Journal.*
 
 ## Acknowledgements
 Funding for this study was provided by Life + Project, named [CarbOnFarm] (http://www.carbonfarm.eu/), Technologies to stabilize soil organic carbon and farm productivity, promote waste value and climate change mitigation, project number: Life12 ENV/IT/719
