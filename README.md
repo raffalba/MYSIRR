@@ -3,6 +3,8 @@
 
 ### Minimalist agro-hYdrologicalmodel for Sustainable IRRigation management- soil moisture and crop dynamics*
 ----------
+<p align="left"><img src="https://github.com/raffalba/MYSIRR/blob/master/img/logo.png"/></p>
+
 **MY SIRR** is a software written in python programming language with a simple Graphical User Interface (GUI) for quantitativly assess and compare agricultural enterprises across climates, soil types, crops, and irrigation strategies, accounting for the unpredictability of the hydro-climatic forcing.
 
 ## Table of Contents
