@@ -1,5 +1,5 @@
-irr,coeff effic
-0,0.9
+irr(mm),coeff effic,s_tilde min,s_target max
+0,0.9,0.14,0.28
 0,
 0,
 8,

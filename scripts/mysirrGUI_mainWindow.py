@@ -1,4 +1,25 @@
-﻿import imp
+﻿# -*- coding: utf-8 -*-
+"""
+/***************************************************************************
+ MY SIRR
+       Minimalist agro-hYdrologicalmodel for Sustainable IRRigation management- soil moisture and crop dynamics
+ MY SIRR
+                              -------------------
+        versione             : v.3.0
+        author	             : Raffaele Albano
+        contact              : http://www2.unibas.it/raffaelealbano/?page_id=115
+ ***************************************************************************/
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 3 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+"""
+
+import imp
 try:
     imp.find_module('xml')
 except ImportError:
@@ -14,7 +35,8 @@ import xml.etree.cElementTree as ET
 from PySide.QtGui import *
 from PySide.QtCore import *
 from ui_mainWindow import Ui_mainWindow
-
+from mysirr import getInputAndPlot
+from mysirr import getInputAndPlotOptimizer
 class MainWindow(QMainWindow, Ui_mainWindow):
     MaxRecentFiles = 5
     project_name='';
@@ -77,6 +99,9 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                 if name.find("s_start")>=0:
                     s_start=t
 
+                if name.find("optimization")>=0:
+                    optimization=t
+                    
              #update gui 
             self.textEditClimate.setPlainText(climate)
             self.textEditCrop.setPlainText(crop)
@@ -90,6 +115,12 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                 check_rain=True
             else:
                 check_rain=False
+
+            if optimization=='Y':
+                check_optimization=True
+            else:
+                check_optimization=False
+
             if et=='N':
                 id_et=0
             if et=='BC':
@@ -99,6 +130,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             self.comboBoxVico.setCurrentIndex(id_vico)
             self.comboBoxET.setCurrentIndex(id_et)
             self.checkBoxRain.setChecked(check_rain)
+            self.checkBoxOptimization.setChecked(check_optimization)
             self.spinBoxCell.setValue(int(idcell))
             self.doubleSpinBoxSstart.setValue(float(s_start))
 
@@ -116,6 +148,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.s_start=self.doubleSpinBoxSstart.value()
         self.cellid=self.spinBoxCell.value()
         self.inputerror=False
+        self.optimization=self.checkBoxOptimization.isChecked()
         #check files
         if os.path.isfile(self.fileClimate)==False:
             self.goText.append("ERROR: file Climate doesn't exist ")
@@ -146,10 +179,40 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                  rain='Y'
              else:
                  rain='N'
-             command='python mysirr.py'
+             """command='python mysirr.py'
              command=command+' '+ self.fileClimate +' '+self.fileSoil+' '+self.fileCrop+' '+self.fileMan+' '+str(self.cellid)+' '+self.et+' '+rain+' '+self.fileout+' '+self.vico+' '+str(self.s_start)
              self.goText.append(command)
-             os.system(command)
+             os.system(command)"""
+
+             rainrandom = 0
+             if rain.find("N") >= 0:
+                 rainrandom = 0
+             if rain.find("Y") >= 0:
+                 rainrandom = 1
+
+             use_bc = 0
+             if self.et.find("N") >= 0:
+                 use_bc = 0
+             if self.et.find("BC") >= 0:
+                 use_bc = 1
+             if self.et.find("PM") >= 0:
+                 use_bc = 2
+
+             #def getInputAndPlot(idcell, input_clim, input_soil, input_crop, input_manage, rainrandom, use_bc, outputfile, vico, soilmoisture_start)
+             if self.optimization==False:
+                getInputAndPlot(self.cellid, self.fileClimate, self.fileSoil, self.fileCrop, self.fileMan, rainrandom, use_bc, self.fileout, self.vico, self.s_start)
+             else:
+
+                 #s_tilde_min=0
+                 #s_tilde_max=0.9
+                 #s_target_max=1
+                 mindist=0.01
+                 s_step=0.01
+                 self.goText.append("optimization started")
+                 #param_opt=getInputAndPlotOptimizer(self.cellid, self.fileClimate, self.fileSoil, self.fileCrop, self.fileMan, rainrandom, use_bc, self.fileout, self.vico, self.s_start,s_tilde_min,s_tilde_max,s_target_max, mindist, s_step)
+                 param_opt=getInputAndPlotOptimizer(self.cellid, self.fileClimate, self.fileSoil, self.fileCrop, self.fileMan, rainrandom, use_bc, self.fileout, self.vico, self.s_start, mindist, s_step)
+                 self.goText.append("optimization completed")
+                 self.goText.append("s tilde: "+str(param_opt[0])+ " s target: "+str(param_opt[1]))
     def ClimatePushed(self):
         filename=QFileDialog.getOpenFileName(self)
         if len(filename[0])>0:
@@ -173,7 +236,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
     def open(self):
          filename=QFileDialog.getOpenFileName(self)
          if len(filename[0])>0:
-            self.textEditOutput.setPlainText(filename[0])
+            #self.textEditOutput.setPlainText(filename[0])
+            self.loadprojectfile(filename[0])
     def save(self):
         self.fileClimate=self.textEditClimate.toPlainText()
         self.fileCrop=self.textEditCrop.toPlainText()
@@ -183,6 +247,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.et=self.comboBoxET.currentText()
         self.vico=self.comboBoxVico.currentText()
         self.rain=self.checkBoxRain.isChecked()
+        self.optimization=self.checkBoxOptimization.isChecked()
         self.s_start=self.doubleSpinBoxSstart.value()
         self.cellid=self.spinBoxCell.value()
         self.inputerror=False
@@ -205,7 +270,10 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                  rain='Y'
              else:
                  rain='N'
-             
+             if self.optimization==True:
+                 optim='Y'
+             else:
+                 optim='N'
                 ## write project file
         if len(self.project_name)>0:
             outputfileproj=self.project_name;               
@@ -222,6 +290,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             ET.SubElement(doc,"field9",name="Tseas").text=str(0)
             ET.SubElement(doc,"field10",name="s_start").text=str(self.s_start)
             ET.SubElement(doc,"field11",name="output").text=self.fileout
+            ET.SubElement(doc,"field12", name="optimization").text = optim
             tree=ET.ElementTree(root)
             tree.write(outputfileproj)
             self.setCurrentFile(outputfileproj)
@@ -236,6 +305,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.et=self.comboBoxET.currentText()
         self.vico=self.comboBoxVico.currentText()
         self.rain=self.checkBoxRain.isChecked()
+        self.optimization=self.checkBoxOptimization.isChecked()
         self.s_start=self.doubleSpinBoxSstart.value()
         self.cellid=self.spinBoxCell.value()
         self.inputerror=False
@@ -258,6 +328,10 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                  rain='Y'
              else:
                  rain='N'
+             if self.optimization==True:
+                 optim='Y'
+             else:
+                 optim='N'
              filename=QFileDialog.getSaveFileName(self)
              if len(filename[0])>0:
                  ## write project file
@@ -275,6 +349,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                 ET.SubElement(doc,"field9",name="Tseas").text=str(0)
                 ET.SubElement(doc,"field10",name="s_start").text=str(self.s_start)
                 ET.SubElement(doc,"field11",name="output").text=self.fileout
+                ET.SubElement(doc,"field12", name="optimization").text = optim
                 tree=ET.ElementTree(root)
                 tree.write(outputfileproj)
                 self.setCurrentFile(outputfileproj)

@@ -1,5 +1,30 @@
 # -*- coding: utf-8 -*-
+"""
+/***************************************************************************
+ MY SIRR
+       Minimalist agro-hYdrologicalmodel for Sustainable IRRigation management- soil moisture and crop dynamics
+ MY SIRR
+                              -------------------
+        versione             : v.3.0
+        author	             : Raffaele Albano
+        contact              : http://www2.unibas.it/raffaelealbano/?page_id=115
+ ***************************************************************************/
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 3 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+"""
 
+# Form implementation generated from reading ui file 'mainWindow.ui'
+#
+# Created: Wed Oct 19 14:28:57 2016
+#      by: pyside-uic 0.2.15 running on PySide 1.2.4
+#
+# WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
 
@@ -176,6 +201,17 @@ class Ui_mainWindow(object):
         self.comboBoxVico.setObjectName("comboBoxVico")
         self.comboBoxVico.addItem("")
         self.comboBoxVico.addItem("")
+        self.checkBoxOptimization = QtGui.QCheckBox(self.groupBox_2)
+        self.checkBoxOptimization.setGeometry(QtCore.QRect(110, 260, 81, 17))
+        self.checkBoxOptimization.setText("")
+        self.checkBoxOptimization.setObjectName("checkBoxOptimization")
+        self.label_15 = QtGui.QLabel(self.groupBox_2)
+        self.label_15.setGeometry(QtCore.QRect(10, 280, 46, 13))
+        self.label_15.setText("")
+        self.label_15.setObjectName("label_15")
+        self.label_16 = QtGui.QLabel(self.groupBox_2)
+        self.label_16.setGeometry(QtCore.QRect(10, 260, 81, 16))
+        self.label_16.setObjectName("label_16")
         mainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtGui.QMenuBar(mainWindow)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 1013, 21))
@@ -231,6 +267,7 @@ class Ui_mainWindow(object):
         self.comboBoxVico.setToolTip(QtGui.QApplication.translate("mainWindow", "<html><head/><body><p>Yeld empirical (vico2011) or dichotomic (vico2013) formula</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxVico.setItemText(0, QtGui.QApplication.translate("mainWindow", "EMP", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxVico.setItemText(1, QtGui.QApplication.translate("mainWindow", "DIC", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_16.setText(QtGui.QApplication.translate("mainWindow", "OPTIMIZATION", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("mainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.action_RecentProject.setTitle(QtGui.QApplication.translate("mainWindow", "Recent Projects", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen_Project.setText(QtGui.QApplication.translate("mainWindow", "Open Project", None, QtGui.QApplication.UnicodeUTF8))

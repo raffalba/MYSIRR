@@ -1,3 +1,24 @@
+# -*- coding: utf-8 -*-
+"""
+/***************************************************************************
+ MY SIRR
+       Minimalist agro-hYdrologicalmodel for Sustainable IRRigation management- soil moisture and crop dynamics
+ MY SIRR
+                              -------------------
+        versione             : v.3.0
+        author	             : Raffaele Albano
+        contact              : http://www2.unibas.it/raffaelealbano/?page_id=115
+ ***************************************************************************/
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 3 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+"""
+
 import xml.etree.cElementTree as ET
 import os
 import sys
