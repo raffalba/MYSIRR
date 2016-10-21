@@ -154,7 +154,7 @@ The main output of the models are:
 * Crop development during the growing season
 * Effective user of water (the fraction of water made available to the plant that is indeed used for productive uses)
 * Yeld
-* WaterFootprint(considered as the inverse of Water Productivity)
+* Water Productivity (a measure of the efficiency with which total available water supply is transformed into marketable yield)
 
 ## Reference
 *Albano, R., Manfreda, S., Celano, C., MY SIRR: Minimalist agro-hYdrological model for Sustainable Irrigation management – soil moisture and crop dynamics, [Software X] (http://www.journals.elsevier.com/softwarex/) (under review)*
