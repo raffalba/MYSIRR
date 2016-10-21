@@ -1,10 +1,7 @@
 future==0.15.2
 matplotlib==1.4.3
 numpy==1.9.2
-pefile==2016.3.28
-PyInstaller==3.2
 pyparsing==2.0.3
-pypiwin32==219
 PySide==1.2.4
 python-dateutil==2.4.2
 six==1.9.0
