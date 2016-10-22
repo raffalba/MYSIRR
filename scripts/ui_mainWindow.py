@@ -27,6 +27,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
+import images_qr
 
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
@@ -41,7 +42,7 @@ class Ui_mainWindow(object):
         mainWindow.setMinimumSize(QtCore.QSize(1013, 517))
         mainWindow.setMaximumSize(QtCore.QSize(1013, 517))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icone/main.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icone/main.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         mainWindow.setWindowIcon(icon)
         self.centralwidget = QtGui.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -68,25 +69,25 @@ class Ui_mainWindow(object):
         self.label = QtGui.QLabel(self.groupBox)
         self.label.setGeometry(QtCore.QRect(140, 20, 90, 70))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("icone/climate.jpg"))
+        self.label.setPixmap(QtGui.QPixmap(":/icone/climate.jpg"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.label_2 = QtGui.QLabel(self.groupBox)
         self.label_2.setGeometry(QtCore.QRect(140, 90, 90, 70))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("icone/soil.jpg"))
+        self.label_2.setPixmap(QtGui.QPixmap(":/icone/soil.jpg"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtGui.QLabel(self.groupBox)
         self.label_3.setGeometry(QtCore.QRect(140, 160, 90, 70))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("icone/crop.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap(":/icone/crop.jpg"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtGui.QLabel(self.groupBox)
         self.label_4.setGeometry(QtCore.QRect(140, 230, 90, 70))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("icone/management.jpg"))
+        self.label_4.setPixmap(QtGui.QPixmap(":/icone/management.jpg"))
         self.label_4.setScaledContents(True)
         self.label_4.setWordWrap(False)
         self.label_4.setObjectName("label_4")
